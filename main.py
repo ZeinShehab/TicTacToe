@@ -13,7 +13,7 @@ MARGIN = 50
 
 # GAME WINDOW
 WIDTH = 500
-HEIGHT = 500
+HEIGHT = 600
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 
 # COLORS
@@ -22,7 +22,7 @@ X_COLOR = (0,0,155)
 TEXT_COLOR = (155,0,0)
 
 # LOADING IMAGES
-BG = pygame.transform.scale(pygame.image.load(os.path.join("assets/Images", "bg.png")), (WIDTH, HEIGHT))
+BG = pygame.transform.scale(pygame.image.load(os.path.join("assets/Images", "bg.png")), (WIDTH, HEIGHT-100))
 
 # LOADING FONTS
 NUM_FONT = pygame.font.Font(os.path.join("assets/Montserrat", "Montserrat-Light.ttf"), 200)
@@ -58,14 +58,16 @@ def show_line():
 	pass
 
 
+def show_scores():
+	pass
+
+
 def on_click():
 	global grid, turn
 
 	pos = pygame.mouse.get_pos()
 	column = pos[0] // (BLOCK_SIZE + MARGIN)
 	row = pos[1] // (BLOCK_SIZE + MARGIN)
-
-	print(column, row)
 
 	if row < 3 and column < 3:
 		if turn % 2 != 0:
@@ -103,8 +105,7 @@ def logic():
 		if grid[0][2] == 1:
 			return 0
 		if grid[0][2] == 2:
-			return 1
-	
+			return 1	
 
 
 def main():
@@ -141,7 +142,7 @@ def main():
 			O_COLOR = (155,0,0)
 			X_COLOR = (0,0,155)
 
-			time.sleep(1)
+			time.sleep(2)
 
 			run = False
 			turn = 1
